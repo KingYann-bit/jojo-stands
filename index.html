@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Catalogue des Stands – JoJo</title>
+<style>
+:root{--bg:#0d0a18;--card:#1b1530;--tx:#f5f0ff;--mut:#a49ab9;--ac:#b18aff;--bd:rgba(207,190,255,.16);--surface:rgba(30,24,49,.78);--gold:#ffd36e;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:dark}
+:root[data-theme="light"]{--bg:#f6f2ff;--card:#fff;--tx:#211936;--mut:#746b8e;--ac:#7043df;--bd:#e2dcf2;--surface:rgba(255,255,255,.82);--gold:#a87000;color-scheme:light}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(ellipse 65% 34rem at 50% -8rem,color-mix(in srgb,#7950d0 28%,transparent),transparent 75%),radial-gradient(ellipse 32rem 30rem at 100% 35%,color-mix(in srgb,#ca477e 8%,transparent),transparent 75%),radial-gradient(ellipse 28rem 28rem at 0% 70%,color-mix(in srgb,#4165bb 8%,transparent),transparent 75%),var(--bg);color:var(--tx);font-family:"Trebuchet MS",system-ui,sans-serif;line-height:1.5}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:60}
+.wrap{max-width:1380px;margin:auto;padding:0 30px}
+.hero{position:relative;isolation:isolate;overflow:hidden;padding:clamp(48px,8vw,100px) 0 40px;text-align:center}
+.hero::before,.hero::after{content:"";position:absolute;z-index:-1;pointer-events:none}
+.hero::before{width:min(76vw,880px);height:230px;left:50%;top:50%;transform:translate(-50%,-52%);background:radial-gradient(ellipse,color-mix(in srgb,var(--ac) 16%,transparent),transparent 70%);filter:blur(12px)}
+.hero::after{inset:0;background-image:radial-gradient(rgba(255,255,255,.28) .7px,transparent .7px);background-size:28px 28px;opacity:.14;mask-image:linear-gradient(transparent,#000 25%,#000 80%,transparent)}
+.hero .wrap{max-width:1000px}
+.kick{display:inline-flex;align-items:center;gap:10px;letter-spacing:.26em;font-size:.7rem;color:var(--gold);text-transform:uppercase;font-weight:900}
+h1{margin:14px 0 12px;font-size:clamp(3rem,9.5vw,6.8rem);text-transform:uppercase;letter-spacing:.075em;font-weight:1000;line-height:.94;text-shadow:0 8px 40px rgba(0,0,0,.18)}
+h1 span{background:linear-gradient(100deg,#ffe499 4%,#ff704e 46%,#ce83ff 88%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{max-width:680px;color:var(--mut);margin:0 auto 28px;font-size:clamp(.9rem,2vw,1.08rem);letter-spacing:.01em}
+.sum{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.pill{display:flex;align-items:center;gap:9px;padding:6px 15px 6px 6px;border-radius:999px;background:color-mix(in srgb,var(--card) 78%,transparent);border:1px solid var(--bd);font-size:.83rem;font-weight:800;box-shadow:0 8px 26px rgba(0,0,0,.12);backdrop-filter:blur(8px)}
+.pill b{width:29px;height:29px;border-radius:50%;background:var(--rc);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.82rem;box-shadow:inset 0 1px 3px rgba(0,0,0,.18)}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;padding:12px 0;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(20px);border-block:1px solid color-mix(in srgb,var(--bd) 76%,transparent)}
+.bar .wrap{display:grid;min-width:0;gap:10px}
+.toolbar-shell{display:grid;grid-template-columns:minmax(0,1fr);width:100%;min-width:0;gap:10px;padding:12px;border:1px solid var(--bd);border-radius:18px;background:color-mix(in srgb,var(--card) 66%,transparent);box-shadow:0 12px 32px rgba(0,0,0,.1)}
+.toolbar-top{display:grid;grid-template-columns:minmax(0,1fr) auto;min-width:0;align-items:center;gap:10px}
+.search-box{position:relative;flex:1 1 0;min-width:0}
+.search-box::before{content:"⌕";position:absolute;left:16px;top:50%;transform:translateY(-54%);font-size:1.45rem;color:var(--mut);pointer-events:none}
+.lang-switch{display:flex;flex:none;gap:3px;padding:4px;border:1px solid var(--bd);border-radius:12px;background:var(--surface)}
+.lang-switch button{min-width:42px;padding:8px 11px;border:0;border-radius:8px;background:transparent;color:var(--mut);font:inherit;font-size:.76rem;font-weight:900;cursor:pointer;transition:background .2s,color .2s}
+.lang-switch button.on{background:var(--ac);color:#fff;box-shadow:0 3px 12px color-mix(in srgb,var(--ac) 30%,transparent)}
+input{width:100%;min-width:0;padding:13px 17px 13px 46px;border-radius:12px;border:1px solid var(--bd);background:var(--bg);color:var(--tx);font-size:.92rem;box-shadow:inset 0 1px 4px rgba(0,0,0,.08);transition:border-color .2s,box-shadow .2s}
+input:focus{outline:0;border-color:var(--ac);box-shadow:0 0 0 4px color-mix(in srgb,var(--ac) 15%,transparent)}
+.filter-row{display:flex;align-items:flex-start;gap:14px;padding-top:9px;border-top:1px solid color-mix(in srgb,var(--bd) 78%,transparent)}
+.filter-label{flex:none;width:82px;padding-top:8px;color:var(--mut);font-size:.64rem;font-weight:900;letter-spacing:.13em;text-transform:uppercase}
+.chips{display:flex;gap:6px;flex-wrap:wrap;min-width:0}
+.chip{padding:7px 11px;border-radius:9px;border:1px solid var(--bd);background:color-mix(in srgb,var(--card) 72%,transparent);color:var(--mut);cursor:pointer;font-size:.77rem;font-weight:800;transition:transform .18s,border-color .18s,background .18s,color .18s,box-shadow .18s}
+.chip:hover{transform:translateY(-1px);border-color:var(--ac);color:var(--tx)}
+.chip.on{background:var(--rc,var(--ac));color:#fff;border-color:var(--rc,var(--ac));box-shadow:0 4px 13px color-mix(in srgb,var(--rc,var(--ac)) 25%,transparent)}
+#so{margin-left:auto}
+#count{display:inline-flex;width:fit-content;align-items:center;gap:8px;margin-top:18px;padding:7px 12px;border:1px solid var(--bd);border-radius:999px;background:var(--surface);color:var(--mut);font-size:.76rem;font-weight:800;letter-spacing:.025em}
+#count::before{content:"";width:7px;height:7px;border-radius:50%;background:#66d6a6;box-shadow:0 0 10px #66d6a6}
+#g{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(265px,100%),1fr));gap:clamp(19px,2.4vw,32px);padding:18px 0 64px}
+.c{--rc:#f97316;--rc2:#fdba74;position:relative;aspect-ratio:4/6.8;border-radius:25px;padding:8px;display:flex;cursor:pointer;overflow:hidden;background:linear-gradient(145deg,var(--rc2),var(--rc) 55%,color-mix(in srgb,var(--rc) 55%,#000));box-shadow:0 12px 28px rgba(24,13,54,.18),0 2px 5px rgba(0,0,0,.12);transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .22s ease,box-shadow .22s ease}
+.c:hover{box-shadow:0 26px 52px rgba(24,13,54,.34),0 0 0 1px color-mix(in srgb,var(--rc) 38%,transparent)}
+.c::after{content:"";position:absolute;inset:0;border-radius:18px;pointer-events:none;background:radial-gradient(circle at var(--mx,50%) var(--my,0%),rgba(255,255,255,.4),transparent 45%);opacity:0;transition:opacity .2s;mix-blend-mode:overlay}
+.c:hover::after{opacity:1}
+.c.A{--rc:#ef4444;--rc2:#fca5a5}.c.C{--rc:#22c55e;--rc2:#86efac}.c.D{--rc:#3b82f6;--rc2:#93c5fd}
+.c.S{--rc:#d4a017;--rc2:#fff1a8;background:linear-gradient(120deg,#fff1a8,#d4a017,#fff7c9,#b8860b,#fff1a8);background-size:300% 300%;animation:shine 6s linear infinite;box-shadow:0 0 24px rgba(245,197,66,.38),0 12px 28px rgba(24,13,54,.2)}
+@keyframes shine{to{background-position:300% 50%}}
+@media (prefers-reduced-motion:reduce){.c.S{animation:none}}
+.in{flex:1;min-width:0;display:flex;flex-direction:column;border-radius:15px;overflow:hidden;background:color-mix(in srgb,var(--card) 94%,var(--rc));position:relative}
+.c.S .in{background:#fff6d6;color:#3b2a00;--mut:#7a5c10}
+.bd{position:absolute;top:2px;left:2px;z-index:3;width:38px;height:38px;border-radius:50%;background:var(--rc);color:#fff;font-weight:900;font-size:1.25rem;display:flex;align-items:center;justify-content:center;border:2px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.4)}
+.c.S .bd{background:#3b2a00;color:#ffd34d;border-color:#ffd34d}
+.hd{padding:10px 10px 8px 48px}
+.hd b{display:block;font-size:1rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;letter-spacing:.01em}
+.im{flex:1;min-height:0;margin:0 8px;border:2px solid color-mix(in srgb,var(--rc) 70%,white);border-radius:14px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,color-mix(in srgb,var(--rc) 35%,var(--card)),var(--card));cursor:cell;position:relative;box-shadow:inset 0 0 24px color-mix(in srgb,var(--rc) 12%,transparent)}
+.im img{width:100%;height:100%;object-fit:cover}
+.im img{transition:transform .5s ease}
+.c:hover .im img{transform:scale(1.04)}
+.im .card-photo-placeholder{position:absolute;inset:0;display:grid;place-items:center;padding:16px;text-align:center;color:var(--mut);font-size:.78rem;background:linear-gradient(135deg,color-mix(in srgb,var(--rc) 16%,var(--card)),var(--card) 58%,color-mix(in srgb,var(--rc) 10%,var(--card)))}
+.im .card-photo-placeholder[hidden]{display:none}
+.im .card-photo-placeholder::before{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.16) 48%,transparent 66%);transform:translateX(-100%);animation:photo-shimmer 1.6s ease-in-out infinite}
+@keyframes photo-shimmer{to{transform:translateX(100%)}}
+.im.ready::after{content:"";position:absolute;inset:48% 0 0;pointer-events:none;background:linear-gradient(transparent,rgba(13,8,30,.4))}
+.ph{font-size:3.6rem;font-weight:900;color:var(--rc);opacity:.55}
+.ph small{position:absolute;bottom:4px;right:6px;font-size:.6rem;font-weight:400;color:var(--mut);opacity:1}
+.ty{margin:7px 8px 0;padding:5px 9px;font-size:.64rem;text-transform:uppercase;letter-spacing:.07em;background:linear-gradient(90deg,var(--rc),color-mix(in srgb,var(--rc) 12%,transparent));color:#fff;border-radius:6px;display:flex;justify-content:space-between;text-shadow:0 1px 2px rgba(0,0,0,.35)}
+.tx{margin:8px 10px 0;font-size:.79rem;line-height:1.35;font-style:italic;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.7em}
+.card-bottom{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:stretch;gap:8px;margin:8px 9px 0;min-height:58px}
+.card-summary{min-width:0;padding:8px 9px;border-radius:9px;background:color-mix(in srgb,var(--rc) 8%,var(--card));font-size:.72rem;line-height:1.35}
+.card-summary b,.card-side-title{display:block;margin-bottom:3px;color:var(--mut);font-size:.56rem;letter-spacing:.08em;text-transform:uppercase;font-style:normal}
+.card-summary span{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.card-stats{width:104px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:3px;align-content:center;padding:5px;border:1px solid color-mix(in srgb,var(--rc) 20%,var(--bd));border-radius:9px;background:color-mix(in srgb,var(--rc) 5%,var(--card))}
+.card-stat{display:flex;justify-content:space-between;align-items:center;gap:2px;padding:2px 3px;border-radius:4px;font-size:.56rem;line-height:1.2;color:var(--mut)}
+.card-stat b{color:var(--rc);font-size:.64rem}
+.card-no-stats{min-width:82px;max-width:112px;display:flex;flex-direction:column;justify-content:center;gap:5px;padding:7px;border-left:1px solid color-mix(in srgb,var(--rc) 28%,var(--bd));font-size:.61rem;line-height:1.2;color:var(--mut)}
+.card-no-stats span{display:block;overflow:hidden;text-overflow:ellipsis}
+.rd{height:145px;display:block;margin:4px auto 0;color:var(--tx)}
+.c.S .rd{color:#3b2a00}
+.nr{display:none}
+.rd{height:112px;display:block;margin:2px auto 0;color:var(--tx)}
+.c.S .rd{color:#3b2a00}
+.nr{height:112px;margin:4px 10px 0;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--mut);font-size:.72rem;border:1px dashed var(--mut);border-radius:8px}
+.ft{display:flex;justify-content:space-between;gap:8px;padding:7px 10px 9px;font-size:.68rem;color:var(--mut);font-weight:700}
+.ft span:first-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.zm{position:fixed;inset:0;z-index:50;background:rgba(5,3,15,.82);display:flex;align-items:center;justify-content:center;padding:20px;overflow:auto}
+.zm[hidden]{display:none}
+.zw{width:min(340px,92vw);text-align:center}
+.zw .c{width:100%;cursor:default;transform:none}
+.lks{margin-top:12px;display:flex;gap:8px;justify-content:center}
+.lks a{padding:8px 14px;border-radius:999px;background:#fff;color:#1b1630;text-decoration:none;font-size:.85rem;border:0;cursor:pointer}
+.x{width:42px;height:42px;flex:none;display:grid;place-items:center;border:1px solid var(--bd);border-radius:50%;background:var(--card);color:var(--tx);font-size:1.6rem;line-height:1;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.13);transition:transform .18s,background .18s,color .18s}
+.x:hover{transform:rotate(90deg);background:var(--ac);color:#fff}
+.detail{position:fixed;inset:0;z-index:55;background:rgba(11,7,28,.72);backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;padding:16px;overflow:auto}
+.detail[hidden]{display:none}
+.detail-panel{width:min(960px,100%);max-height:min(90vh,940px);overflow:auto;background:var(--card);color:var(--tx);border:1px solid color-mix(in srgb,var(--bd) 75%,white);border-radius:24px;box-shadow:0 30px 100px rgba(0,0,0,.48);animation:panel-in .24s ease-out}
+@keyframes panel-in{from{opacity:0;transform:translateY(12px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+.detail-head{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 20px;background:color-mix(in srgb,var(--card) 91%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--bd)}
+.detail-head h2{margin:0;font-size:clamp(1.3rem,4vw,2rem);letter-spacing:.015em}
+.detail-content{padding:clamp(16px,3vw,28px)}
+.detail-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.detail-image{margin:0;min-height:180px;border:1px solid var(--bd);border-radius:16px;overflow:hidden;background:linear-gradient(145deg,color-mix(in srgb,var(--ac) 20%,var(--card)),var(--card));box-shadow:0 8px 24px rgba(30,18,65,.08)}
+.detail-image img{display:block;width:100%;height:clamp(180px,32vw,310px);object-fit:cover}
+.detail-image img[hidden],.detail-placeholder[hidden]{display:none}
+.detail-image figcaption{padding:8px 10px;color:var(--mut);font-size:.82rem}
+.detail-placeholder{height:clamp(180px,32vw,310px);display:grid;place-items:center;padding:20px;text-align:center;color:var(--mut)}
+.detail-facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:16px 0}
+.detail-fact{padding:13px;border:1px solid var(--bd);border-radius:12px;background:color-mix(in srgb,var(--ac) 6%,var(--card))}
+.detail-fact b{display:block;color:var(--mut);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;margin-bottom:5px}
+.detail-radar{width:min(240px,100%);margin:0 auto 18px;padding:8px;border:1px solid var(--bd);border-radius:14px;background:color-mix(in srgb,var(--ac) 4%,var(--card))}
+.empty-note{grid-column:1/-1;padding:20px;border:1px solid var(--bd);border-radius:14px;background:var(--surface);color:var(--mut);line-height:1.6}
+.detail-description{line-height:1.55;white-space:pre-line}
+.detail-sources{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.detail-sources a{color:var(--ac);overflow-wrap:anywhere}
+.detail-status{color:var(--mut);font-size:.85rem}
+button:focus-visible,a:focus-visible{outline:3px solid color-mix(in srgb,var(--ac) 65%,white);outline-offset:3px}
+@media(max-width:620px){.wrap{padding:0 14px}.hero{padding-top:42px}.bar .wrap{gap:8px}.bar input{flex-basis:100%}.detail-gallery{grid-template-columns:1fr}.detail-panel{max-height:94vh;border-radius:18px}.detail-head{padding:12px 14px}.detail-image img,.detail-placeholder{height:clamp(170px,50vw,250px)}}
+@media(max-width:360px){.card-bottom{gap:5px;margin-inline:6px}.card-stats{width:92px}.card-no-stats{min-width:74px;padding:5px}.card-summary{padding:7px;font-size:.68rem}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+footer{color:var(--mut);font-size:.8rem;padding:0 0 36px;text-align:center;line-height:1.8}
+.catalog-heading{display:flex;align-items:center;gap:16px;margin-top:28px;color:var(--tx);font-size:.72rem;font-weight:900;letter-spacing:.18em;text-transform:uppercase}
+.catalog-rule{height:1px;flex:1;background:linear-gradient(90deg,var(--bd),transparent)}
+footer{margin-bottom:24px;padding:24px 28px;border:1px solid var(--bd);border-radius:18px;background:color-mix(in srgb,var(--card) 62%,transparent);color:var(--mut);font-size:.8rem;text-align:center;line-height:1.9}
+@media(max-width:760px){.wrap{padding:0 16px}.hero{padding:54px 0 30px}.toolbar-shell{padding:9px}.filter-row{gap:8px}.filter-label{width:68px;font-size:.57rem}.chips{gap:5px}.chip{padding:7px 9px;font-size:.72rem}}
+@media(max-width:620px){.wrap{padding:0 14px}.hero{padding-top:42px}.toolbar-top{align-items:stretch}.bar .wrap{gap:8px}.detail-gallery{grid-template-columns:1fr}.detail-panel{max-height:94vh;border-radius:18px}.detail-head{padding:12px 14px}.detail-image img,.detail-placeholder{height:clamp(170px,50vw,250px)}}
+@media(max-width:500px){.bar{padding:8px 0}.toolbar-shell{min-width:0;gap:8px;border-radius:14px}.toolbar-top{gap:7px}.lang-switch button{min-width:36px;padding:8px}.filter-row{display:block}.filter-label{display:block;width:fit-content;padding:0 0 6px}.chips{width:100%;flex-wrap:nowrap;overflow-x:auto;padding:1px 1px 6px;scrollbar-width:thin}.chips::-webkit-scrollbar{height:3px}.chips::-webkit-scrollbar-thumb{background:var(--bd);border-radius:9px}#so{display:block;width:100%;margin:7px 0 0}.hero h1{letter-spacing:.035em}.sum{gap:6px}.pill{padding-right:10px;font-size:.75rem}.catalog-heading{margin-top:20px}}
+@media(max-width:500px){.wrap{padding:0 14px}.toolbar-shell{padding:8px}.search-box{min-width:0}.filter-row>*{min-width:0}}
+</style>
+</head>
+<body>
+<div class="hero"><div class="wrap">
+<div class="kick" id="kick">★ Collection ★</div>
+<h1>Stands <span>JoJo</span></h1>
+<p class="sub" id="subtitle"></p>
+<div class="sum" id="sum"></div>
+</div></div>
+<div class="bar"><div class="wrap">
+<div class="toolbar-shell">
+<div class="toolbar-top"><div class="search-box"><input id="q" type="search" placeholder="Rechercher un Stand, un user, un pouvoir…"></div>
+<div class="lang-switch" role="group" id="lang-switch"><button type="button" data-lang="fr" aria-pressed="true">FR</button><button type="button" data-lang="en" aria-pressed="false">EN</button></div></div>
+<div class="filter-row"><span class="filter-label" id="parts-label"></span><div class="chips" id="pb"></div></div>
+<div class="filter-row"><span class="filter-label" id="ranks-label"></span><div class="chips" id="rb"></div><button class="chip" id="so">Tri : ordre ↕</button></div>
+</div>
+</div></div>
+<div class="wrap">
+<div class="catalog-heading"><span id="catalog-title"></span><span class="catalog-rule"></span></div>
+<div id="count"></div>
+<main id="g"></main>
+<footer id="footer"></footer>
+</div>
+<div class="zm" id="zm" hidden></div>
+<div class="detail" id="detail" role="dialog" aria-modal="true" aria-labelledby="detail-title" hidden></div>
+<script>
+// [partie, stand, utilisateur, type, stats PWR SPD RNG DUR PRC POT, pouvoir]
+var D=[
+[3,"Star Platinum","Jotaro Kujo","Proche portée","AACAAA","Force et vitesse extrêmes, arrêt du temps"],
+[3,"The World","DIO","Proche portée","AACABB","Arrêt du temps"],
+[3,"Magician’s Red","Muhammad Avdol","Distance","BBCBCC","Flammes"],
+[3,"Hierophant Green","Noriaki Kakyoin","Distance","CBACCB","Émeraude Splash, tentacules"],
+[3,"Silver Chariot","Jean-Pierre Polnareff","Proche portée","BABCBC","Escrime ultra-rapide"],
+[3,"Hermit Purple","Joseph Joestar","Distance","","Ronces, divination"],
+[3,"The Fool","Iggy","Automatique","","Contrôle du sable"],
+[3,"Emperor","Hol Horse","Distance","","Revolver à balles guidées"],
+[3,"Hanged Man","J. Geil","Distance","","Voyage via les reflets"],
+[3,"Justice","Enya Geil","Brume","","Brume qui contrôle les morts"],
+[3,"Death Thirteen","Mannish Boy","Rêve","","Attaque dans les rêves"],
+[3,"Judgement","Cameo","Distance","","Génie qui exauce des vœux"],
+[3,"The Sun","Arabia Fats","Distance","","Mini-soleil"],
+[3,"Yellow Temperance","Rubber Soul","Parasite","","Masse de chair qui absorbe"],
+[3,"Strength","Forever","Autonome","","Orang-outan sur un navire vivant"],
+[3,"Ebony Devil","Devo","Poupée","","Poupée vengeresse"],
+[3,"Tower of Gray","Gray Fly","Distance","","Mouche ultra-rapide"],
+[3,"Dark Blue Moon","Capt. Tennille","Autonome","","Créatures marines, bateau"],
+[3,"Lovers","Steely Dan","Parasite","","S’infiltre dans le cerveau"],
+[3,"Empress","Nena","Parasite","","Se transforme en enfant"],
+[3,"Wheel of Fortune","ZZ","Véhicule","","Voiture vivante"],
+[3,"Anubis","Chaka","Parasite","","Épée qui possède son porteur"],
+[3,"Horus","Pet Shop","Distance","","Glace"],
+[3,"Bastet","Mariah","Magnétique","","Magnétisme"],
+[3,"Sethan","Alessi","Distance","","Rajeunit"],
+[3,"Khnum","Oingo","Distance","","Déguisement"],
+[3,"Thoth","Boingo","Distance","","Manga prophétique"],
+[3,"Atum / Osiris","D’Arby (Daniel et Telence)","Âme","","Vole l’âme au jeu"],
+[3,"Geb","N’Doul","Eau","","Contrôle de l’eau"],
+[3,"Cream","Vanilla Ice","Distance","","Aspire dans le vide"],
+[4,"Crazy Diamond","Josuke Higashikata","Proche portée","AADBBC","Restaure tout (sauf les morts)"],
+[4,"Echoes (Act 1/2/3)","Koichi Hirose","Évolutif","","Sons transformés en poids, évolue par actes"],
+[4,"The Hand","Okuyasu Nijimura","Proche portée","","Efface ce qu’il tranche, rapproche"],
+[4,"Heaven’s Door","Rohan Kishibe","Proche portée","","Transforme les gens en livres"],
+[4,"Killer Queen","Yoshikage Kira","Proche portée","ACDBBC","Bombe, Sheer Heart Attack, Bites the Dust"],
+[4,"Red Hot Chili Pepper","Anjuro Katagiri","Distance","","Électricité"],
+[4,"Harvest","Shigechi","Autonome","","Essaim de petits Stands"],
+[4,"Aqua Necklace","Akira Otoishi","Eau","","Contrôle de l’eau"],
+[4,"Highway Star","Kenzo","Distance","","Piste et absorbe l’énergie"],
+[4,"Surface","Toshikazu Hazamada","Poupée","","Mimétisme"],
+[4,"Love Deluxe","Yuya Fungami","Distance","","Cheveux"],
+[4,"Atom Heart Father","Tamami Kobayashi","Fantôme","","Photos du fantôme (Ghost Girl)"],
+[4,"Stray Cat","Aya Tsuji","Distance","","Bulles d’air"],
+[4,"Boy II Man","Ken Oyanagi","Distance","","Vole des dons"],
+[5,"Gold Experience / Requiem","Giorno Giovanna","Proche portée","","Donne la vie / annule les actions"],
+[5,"Sticky Fingers","Bruno Bucciarati","Proche portée","","Fermetures éclair"],
+[5,"Sex Pistols","Guido Mista","Distance","","Six balles guidées"],
+[5,"Moody Blues","Leone Abbacchio","Distance","","Rejoue le passé"],
+[5,"Aerosmith","Narancia Ghirga","Distance","","Avion radar"],
+[5,"Purple Haze","Pannacotta Fugo","Proche portée","","Virus mortel"],
+[5,"Spice Girl","Trish Una","Proche portée","","Assouplit la matière"],
+[5,"King Crimson","Diavolo","Proche portée","","Efface le temps"],
+[5,"Notorious B.I.G","Carne","Autonome","","Absorbe les dégâts, croît"],
+[5,"Beach Boy","Pesci","Distance","","Canne à pêche"],
+[5,"Baby Face","Melone","Distance","","Reproduction"],
+[5,"Little Feet","Formaggio","Distance","","Réduit"],
+[5,"Grateful Dead","Prosciutto","Distance","","Vieillissement"],
+[5,"Metallica","Risotto Nero","Distance","","Magnétisme du fer"],
+[5,"Man in the Mirror","Illuso","Distance","","Monde du miroir"],
+[5,"Clash","Squalo","Distance","","Ultrason"],
+[5,"Oasis","Tiziano","Distance","","Liquéfie"],
+[5,"Green Day","Cioccolata","Distance","","Moisissure"],
+[5,"Soft Machine","Sorbet et Gelato","Distance","","Dégonfle"],
+[6,"Stone Free","Jolyne Cujoh","Proche portée","","Ficelles"],
+[6,"Diver Down","Narciso Anasui","Proche portée","","Stocke les coups"],
+[6,"Kiss","Ermes Costello","Distance","","Autocollants"],
+[6,"Foo Fighters","F.F.","Autonome","","Plancton"],
+[6,"Weather Report","Weather Report","Distance","","Météo"],
+[6,"Whitesnake","Enrico Pucci","Proche portée","","Retire Stand et souvenirs en disques"],
+[6,"C-Moon","Enrico Pucci","Proche portée","","Inverse la gravité"],
+[6,"Made in Heaven","Enrico Pucci","Proche portée","","Accélère le temps"],
+[6,"Goo Goo Dolls","Miraschon","Distance","","Rapetisse"],
+[6,"Burning Down the House","Thunder McQueen","Distance","","Radio qui diffuse des sons"],
+[6,"Jumpin’ Jack Flash","Gwess","Proche portée","","Gravité"],
+[6,"Bohemian Rhapsody","Rikiel","Distance","","Personnages de fiction"],
+[6,"Yo-Yo Ma","Ungalo","Distance","","Chien d’acide"],
+[6,"Jail House Lock","Lang Rangler","Distance","","Limite la mémoire à 3 secondes"],
+[7,"Tusk (Act 1 à 4)","Johnny Joestar","Proche portée","","Ongles, rotation, infini"],
+[7,"Ball Breaker","Gyro Zeppeli","Proche portée","","Balles à rotation"],
+[7,"D4C","Funny Valentine","Proche portée","","Jonction de dimensions parallèles"],
+[7,"Scary Monsters","Diego Brando","Proche portée","","Transformation en dinosaure"],
+[7,"Oh! Lovers","Mountain Tim","Distance","","Contrôle de la température"],
+[7,"Ticket to Ride","—","Distance","","Passage"],
+[7,"Cream Starter","—","Distance","","Bulles"],
+[7,"Mandom","—","Distance","","Rembobine de 6 secondes"],
+[8,"Awaking III Leaves","Mitsuba Higashikata","Distance","","Manipule les vecteurs grâce à des flèches symboliques"],
+[8,"Blue Hawaii","Dolomite","Automatique","","Infecte les personnes touchées et les pousse à poursuivre une cible"],
+[8,"Born This Way","Kei Nijimura","Automatique","","Stand automatique qui poursuit ceux qui ouvrent quelque chose et génère un froid intense"],
+[8,"Brain Storm","Urban Guerrilla","Distance","","Bactéries qui attaquent le sang et provoquent une hémolyse"],
+[8,"California King Bed","Daiya Higashikata","Proche portée","","Vole des souvenirs selon les règles d’un jeu"],
+[8,"Doctor Wu","Wu Tomoki","Proche portée","","Désassemble son corps en minuscules particules de pierre"],
+[8,"Doggy Style","Rai Mamezuku","Proche portée","","Déroule la peau et le corps en longs filaments"],
+[8,"Doobie Wah!","Aisho Dainenjiyama","Automatique","","Tornade qui traque sa cible en suivant son souffle"],
+[8,"Fun Fun Fun","Ojiro Sasame","Distance","","Contrôle une personne blessée lorsque ses quatre membres sont immobilisés"],
+[8,"I Am a Rock","Yotsuyu Yagiyama","Proche portée","","Attire des objets vers une cible désignée"],
+[8,"Killer Queen (JoJolion)","Yoshikage Kira","Proche portée","","Bulles explosives et mini-bombes à tête chercheuse"],
+[8,"King Nothing","Norisuke Higashikata IV","Distance","","Suit une odeur grâce à un corps composé de pièces de puzzle"],
+[8,"Les Feuilles","—","Autonome","","Feuilles de ginkgo qui transportent objets et personnes le long de trajectoires fixes"],
+[8,"Love Love Deluxe","Karera Sakunami","Distance","","Contrôle et fait pousser les cheveux"],
+[8,"Milagroman","—","Automatique","","Malédiction liée à de l’argent qui se multiplie et devient impossible à dépenser"],
+[8,"Nut King Call","Joshu Higashikata","Proche portée","","Pose des écrous et boulons pour démonter puis réassembler des choses"],
+[8,"Ozon Baby","Poor Tom","Automatique","","Réduit la pression atmosphérique autour de sa cible"],
+[8,"Paisley Park","Yasuho Hirose","Distance","","Guide sa porteuse et trouve des informations ou des itinéraires utiles"],
+[8,"Paper Moon King","Tsurugi Higashikata","Proche portée","","Origamis qui brouillent la perception des visages et des objets"],
+[8,"Schott Key No.1","A. Phex Brothers","Distance","","Stand lié à son jumeau et à une balle utilisée pour transférer des objets"],
+[8,"Schott Key No.2","A. Phex Brothers","Automatique","","Stand jumeau dont la balle transporte un poison mortel"],
+[8,"Soft & Wet","Josuke Higashikata (JoJolion)","Proche portée","","Bulles qui dérobent des propriétés aux objets et explosent à l’impact"],
+[8,"Space Trucking","Kaato Higashikata","Distance","","Range des objets entre les cartes de son jeu"],
+[8,"Speed King","Jobin Higashikata","Proche portée","","Stocke la chaleur dans les objets puis la libère"],
+[8,"Tusk","Johnny Joestar","Proche portée","","Rotation et projectiles d’ongles; évolution en plusieurs actes"],
+[8,"Vitamin C","Tamaki Damo","Proche portée","","Ramollit les personnes et les objets marqués de ses empreintes"],
+[8,"Walking Heart","Hato Higashikata","Proche portée","","Allonge ses jambes en pointes pour attaquer"],
+[8,"Wonder of U","Tooru","Automatique","","Déclenche des calamités contre ceux qui le poursuivent"],
+[9,"November Rain","Jodio Joestar","Distance","","Fait tomber une pluie de gouttes extrêmement lourdes"],
+[9,"Smooth Operators","Dragona Joestar","Proche portée","","Fait glisser ou déplacer des détails à la surface des objets et des personnes"],
+[9,"The Hustle","Paco Laburantes","Proche portée","","Contrôle ses muscles pour s’accrocher aux surfaces et percevoir les vibrations"],
+[9,"THE MATTEKUDASAI","Usagi Alohaoe","Distance","","Se transforme en objet demandé par une autre personne"],
+[9,"Bags' Groove","Lulu","Automatique","","Micro-Stand qui poursuit ses victimes et pose des pièges"],
+[9,"Big Mouth Strikes Again","Charming Man","Proche portée","","Détache et contrôle des couches de peau semblables à du sable"],
+[9,"Cat Size","Wild Cat Size","Automatique","","Crée des fils fins et résistants qui s’enroulent autour des cibles"],
+[9,"West End Girl","Key West","Distance","","Stand à longue portée; capacité encore peu documentée"],
+[9,"Lyin' Eyes","Laem Chabang","Distance","","Informations détaillées sur la capacité encore limitées"],
+[9,"Glory Days","Bobby Jean","Distance","","Contrôle la vitesse des balles tirées par son utilisateur"],
+[9,"200 Balloons","Ningbo","Proche portée","","Gonfle les objets et les êtres vivants qu’il touche"],
+[9,"Point Blank Seal","Mundra","Distance","","Autocollants qui marquent les cibles et se propagent par le sang"],
+[9,"Eclipse Eight","Hacca Howler","Distance","","Produit une brume visible par les utilisateurs de Stand; autres effets inconnus"],
+[9,"Light Rod Stand","—","Distance","","Stand à longue portée capable de poursuivre et d’attaquer; détails inconnus"],
+[9,"Heaven's Door (The JOJOLands)","Rohan Kishibe","Proche portée","","Transforme les personnes en livres et permet de lire ou modifier leurs pages"]
+];
+
+var lang="fr";
+try{lang=localStorage.getItem("jojo-lang")==="en"?"en":"fr"}catch(e){}
+var names={1:{fr:"Phantom Blood (1880)",en:"Phantom Blood (1880)"},2:{fr:"Battle Tendency (1938)",en:"Battle Tendency (1938)"},3:{fr:"Stardust Crusaders (1989)",en:"Stardust Crusaders (1989)"},4:{fr:"Diamond is Unbreakable (1999)",en:"Diamond is Unbreakable (1999)"},5:{fr:"Vento Aureo (2001)",en:"Golden Wind (2001)"},6:{fr:"Stone Ocean (2011–2012)",en:"Stone Ocean (2011–2012)"},7:{fr:"Steel Ball Run (1890)",en:"Steel Ball Run (1890)"},8:{fr:"JoJolion (2011)",en:"JoJolion (2011)"},9:{fr:"The JOJOLands (2023–…)",en:"The JOJOLands (2023–present)"}};
+var UI={
+ fr:{collection:"★ Collection ★",subtitle:"Parties 1 à 9 · clique pour agrandir ou garde la souris 3 secondes pour la fiche complète",search:"Rechercher un Stand, un utilisateur, un pouvoir…",all:"Tous",parts:"Partie",ranks:"Rangs",sortOrder:"Tri : ordre ↕",sortRank:"Tri : rang ↓",stand:"Stand",image:"Chargement de l’image du Stand…",portrait:"Chargement du portrait…",noUser:"Utilisateur non précisé",user:"Utilisateur",part:"Partie",type:"Type",personalRank:"Rang perso",personal:"(classement personnel)",power:"Pouvoir connu",about:"À propos",loadingUser:"Informations du personnage : chargement…",noUserListed:"Aucun utilisateur n’est précisé dans les données de cette carte.",wikiNote:"Les visuels et résumés disponibles proviennent de JoJo Wiki. Les rangs et pouvoirs résumés sont des données de cette collection ; le classement est personnel.",standSource:"Source Stand : rechercher sur JoJo Wiki",userSource:"Source utilisateur : rechercher sur JoJo Wiki",noUserSource:"Source utilisateur indisponible",imageUnavailable:"Image non disponible depuis le wiki.",searchImage:"Rechercher une image",imageError:"Image non disponible.",openSource:"Ouvrir la source JoJo Wiki",fetchError:"Impossible de charger l’image.",wikiSearch:"Ouvrir la recherche JoJo Wiki",noSummary:"Aucun résumé n’est fourni par l’API pour cette page.",powerCard:"Pouvoir recensé sur cette carte :",noPersonSummary:"Consultez la source JoJo Wiki pour les détails du personnage.",summaryUnavailable:"Résumé indisponible. Consultez la recherche JoJo Wiki ci-dessous.",imageTitle:"Ajouter une image",zoomStand:"🔍 Stand",zoomUser:"🔍 Utilisateur",close:"Fermer",statsUnknown:"Stats non confirmées",rankNote:"(classement personnel)",count:"carte",cards:"cartes",nothing:"Rien trouvé.",emptyEarly:"Aucun Stand n’est listé dans cette partie : Phantom Blood et Battle Tendency précèdent l’introduction des Stands (Hamon).",ability:"Capacités",standInfo:"Infos du Stand",statLabels:["PUI","VIT","POR","DUR","PRÉ","POT"],footer:"Rangs S à D = tier list perso (pas officiel). Les fiches détaillées affichent les visuels et les sources JoJo Wiki ; les statistiques restent celles indiquées sur la carte.",footerImage:"Clique l’image d’une carte pour ajouter ta propre image (gardée dans ton navigateur).",stats:["Puissance","Vitesse","Portée","Durabilité","Précision","Potentiel"],grades:{A:"A — excellente",B:"B — très bonne",C:"C — bonne",D:"D — faible",E:"E — très faible","∞":"∞ — infinie"},language:"Langue"},
+ en:{collection:"★ STAND ARCHIVE ★",subtitle:"Parts 1–9 · click a card to zoom or hover for 3 seconds to open its full profile",search:"Search a Stand, user, or ability…",all:"All",parts:"Part",ranks:"Tiers",sortOrder:"Sort: original ↕",sortRank:"Sort: tier ↓",stand:"Stand",image:"Loading Stand artwork…",portrait:"Loading user portrait…",noUser:"User not specified",user:"User",part:"Part",type:"Type",personalRank:"Personal tier",personal:"(personal ranking)",power:"Known ability",about:"About",loadingUser:"Character details loading…",noUserListed:"No user is listed for this card.",wikiNote:"Available artwork and summaries are from JoJo Wiki. Stand abilities are summarized for this collection; the tier ranking is personal.",standSource:"Stand source: search JoJo Wiki",userSource:"User source: search JoJo Wiki",noUserSource:"User source unavailable",imageUnavailable:"No image available from the wiki.",searchImage:"Search for an image",imageError:"Image unavailable.",openSource:"Open JoJo Wiki source",fetchError:"Could not load the image.",wikiSearch:"Open JoJo Wiki search",noSummary:"No summary is provided by the API for this page.",powerCard:"Ability listed on this card:",noPersonSummary:"See the JoJo Wiki source for character details.",summaryUnavailable:"Summary unavailable. See the JoJo Wiki search below.",imageTitle:"Add an image",zoomStand:"🔍 Stand",zoomUser:"🔍 User",close:"Close",statsUnknown:"Stats unconfirmed",rankNote:"(personal ranking)",count:"card",cards:"cards",nothing:"No results found.",emptyEarly:"No Stands are listed in this part: Phantom Blood and Battle Tendency predate the introduction of Stands (Hamon).",ability:"Abilities",standInfo:"Stand info",statLabels:["PWR","SPD","RNG","DUR","PRE","POT"],footer:"S-to-D tiers are a personal ranking, not official. Detailed profiles show available JoJo Wiki artwork and sources; stats are the values listed on each card.",footerImage:"Click a card image to add your own image (saved in this browser).",stats:["Power","Speed","Range","Durability","Precision","Potential"],grades:{A:"A — excellent",B:"B — very good",C:"C — good",D:"D — low",E:"E — very low","∞":"∞ — infinite"},language:"Language"}
+};
+var TYPES_EN={"Proche portée":"Close-range","Distance":"Long-range","Automatique":"Automatic","Brume":"Mist","Rêve":"Dream","Parasite":"Parasitic","Autonome":"Independent","Poupée":"Doll","Véhicule":"Vehicle","Magnétique":"Magnetic","Âme":"Soul","Eau":"Water","Évolutif":"Evolving","Fantôme":"Ghost"};
+var POWERS_EN={"Force et vitesse extrêmes, arrêt du temps":"Extreme strength and speed; time stop","Arrêt du temps":"Time stop","Flammes":"Flames","Émeraude Splash, tentacules":"Emerald Splash and tendrils","Escrime ultra-rapide":"Ultra-fast swordsmanship","Ronces, divination":"Thorns and spirit photography","Contrôle du sable":"Sand control","Revolver à balles guidées":"Guided-bullet revolver","Voyage via les reflets":"Travel through reflections","Brume qui contrôle les morts":"Mist that controls the dead","Attaque dans les rêves":"Attacks within dreams","Génie qui exauce des vœux":"A genie that grants wishes","Mini-soleil":"Miniature sun","Masse de chair qui absorbe":"Absorbing mass of flesh","Orang-outan sur un navire vivant":"An orangutan and a living ship","Poupée vengeresse":"Vengeful doll","Mouche ultra-rapide":"Ultra-fast fly","Créatures marines, bateau":"Sea creatures and a ship","S’infiltre dans le cerveau":"Infiltrates the brain","Se transforme en enfant":"Transforms into a child","Voiture vivante":"Living car","Épée qui possède son porteur":"Sword that possesses its wielder","Glace":"Ice","Magnétisme":"Magnetism","Rajeunit":"Rejuvenation","Déguisement":"Disguise","Manga prophétique":"Prophetic manga","Vole l’âme au jeu":"Steals souls through games","Contrôle de l’eau":"Water control","Aspire dans le vide":"Erases anything it swallows into the void","Restaure tout (sauf les morts)":"Restores anything except the dead","Sons transformés en poids, évolue par actes":"Turns sounds into weight; evolves through Acts","Efface ce qu’il tranche, rapproche":"Erases what it swipes and brings things closer","Transforme les gens en livres":"Turns people into books","Bombe, Sheer Heart Attack, Bites the Dust":"Bombs, Sheer Heart Attack, and Bites the Dust","Électricité":"Electricity","Essaim de petits Stands":"Swarm of tiny Stands","Piste et absorbe l’énergie":"Tracks and absorbs energy","Mimétisme":"Mimicry","Cheveux":"Hair control","Photos du fantôme (Ghost Girl)":"Photographs of the ghost (Ghost Girl)","Bulles d’air":"Air bubbles","Vole des dons":"Steals abilities","Donne la vie / annule les actions":"Gives life / resets actions","Fermetures éclair":"Zippers","Six balles guidées":"Six guided bullets","Rejoue le passé":"Replays the past","Avion radar":"Radar-equipped plane","Virus mortel":"Deadly virus","Assouplit la matière":"Softens matter","Efface le temps":"Erases time","Absorbe les dégâts, croît":"Absorbs damage and grows","Canne à pêche":"Fishing rod","Reproduction":"Reproduction","Réduit":"Shrinks targets","Vieillissement":"Aging","Magnétisme du fer":"Iron magnetism","Monde du miroir":"Mirror world","Ultrason":"Ultrasound","Liquéfie":"Liquefies its targets","Moisissure":"Mold","Dégonfle":"Deflates targets","Ficelles":"Strings","Stocke les coups":"Stores attacks","Autocollants":"Stickers","Plancton":"Plankton","Météo":"Weather control","Retire Stand et souvenirs en disques":"Removes Stands and memories as discs","Inverse la gravité":"Reverses gravity","Accélère le temps":"Accelerates time","Rapetisse":"Shrinks targets","Radio qui diffuse des sons":"Radio that plays sounds","Gravité":"Gravity","Personnages de fiction":"Fictional characters","Chien d’acide":"Acid dog","Limite la mémoire à 3 secondes":"Limits memory to three seconds","Ongles, rotation, infini":"Nails, rotation, infinity","Balles à rotation":"Spin-powered balls","Jonction de dimensions parallèles":"Connects parallel dimensions","Transformation en dinosaure":"Transforms into a dinosaur","Contrôle de la température":"Temperature control","Passage":"Passage","Bulles":"Bubbles","Rembobine de 6 secondes":"Rewinds time by six seconds"};
+var MORE_POWERS_EN={
+"Manipule les vecteurs grâce à des flèches symboliques":"Manipulates vectors through symbolic arrows",
+"Infecte les personnes touchées et les pousse à poursuivre une cible":"Infects people on contact and forces them to pursue a target",
+"Stand automatique qui poursuit ceux qui ouvrent quelque chose et génère un froid intense":"Automatic Stand that pursues people who open things and generates intense cold",
+"Bactéries qui attaquent le sang et provoquent une hémolyse":"Bacteria that attack the blood and cause hemolysis",
+"Vole des souvenirs selon les règles d’un jeu":"Steals memories according to the rules of a game",
+"Désassemble son corps en minuscules particules de pierre":"Disassembles its body into tiny stone particles",
+"Déroule la peau et le corps en longs filaments":"Unravels the body into long strands",
+"Tornade qui traque sa cible en suivant son souffle":"A tornado that tracks its target by following their breath",
+"Contrôle une personne blessée lorsque ses quatre membres sont immobilisés":"Controls an injured person when all four limbs are immobilized",
+"Attire des objets vers une cible désignée":"Attracts objects toward a designated target",
+"Bulles explosives et mini-bombes à tête chercheuse":"Explosive bubbles and homing mini-bombs",
+"Suit une odeur grâce à un corps composé de pièces de puzzle":"Tracks scents with a body made of puzzle pieces",
+"Feuilles de ginkgo qui transportent objets et personnes le long de trajectoires fixes":"Ginkgo leaves carry people and objects along fixed paths",
+"Contrôle et fait pousser les cheveux":"Controls and grows hair",
+"Malédiction liée à de l’argent qui se multiplie et devient impossible à dépenser":"A money-related curse that multiplies and becomes impossible to spend",
+"Pose des écrous et boulons pour démonter puis réassembler des choses":"Places nuts and bolts to disassemble and reassemble things",
+"Réduit la pression atmosphérique autour de sa cible":"Lowers atmospheric pressure around its target",
+"Guide sa porteuse et trouve des informations ou des itinéraires utiles":"Guides its user and finds useful information or routes",
+"Origamis qui brouillent la perception des visages et des objets":"Origami that distorts the perception of faces and objects",
+"Stand lié à son jumeau et à une balle utilisée pour transférer des objets":"A twin-linked Stand that uses a ball to transfer objects",
+"Stand jumeau dont la balle transporte un poison mortel":"A twin Stand whose ball carries a deadly poison",
+"Bulles qui dérobent des propriétés aux objets et explosent à l’impact":"Bubbles that steal properties from objects and explode on impact",
+"Range des objets entre les cartes de son jeu":"Stores objects between the cards in a deck",
+"Stocke la chaleur dans les objets puis la libère":"Stores heat in objects and releases it",
+"Rotation et projectiles d’ongles; évolution en plusieurs actes":"Spin and nail projectiles; evolves through multiple Acts",
+"Ramollit les personnes et les objets marqués de ses empreintes":"Softens people and objects marked by its fingerprints",
+"Allonge ses jambes en pointes pour attaquer":"Extends its legs into spikes to attack",
+"Déclenche des calamités contre ceux qui le poursuivent":"Triggers calamities against those who pursue it",
+"Fait tomber une pluie de gouttes extrêmement lourdes":"Produces rain with extremely heavy drops",
+"Fait glisser ou déplacer des détails à la surface des objets et des personnes":"Slides or shifts details across the surfaces of objects and people",
+"Contrôle ses muscles pour s’accrocher aux surfaces et percevoir les vibrations":"Controls its muscles to cling to surfaces and sense vibrations",
+"Se transforme en objet demandé par une autre personne":"Transforms into an object requested by another person",
+"Micro-Stand qui poursuit ses victimes et pose des pièges":"A microscopic Stand that pursues victims and sets traps",
+"Détache et contrôle des couches de peau semblables à du sable":"Detaches and controls sand-like layers of skin",
+"Crée des fils fins et résistants qui s’enroulent autour des cibles":"Creates thin, strong wires that wrap around targets",
+"Stand à longue portée; capacité encore peu documentée":"A long-range Stand whose ability is still poorly documented",
+"Informations détaillées sur la capacité encore limitées":"Detailed information about its ability is still limited",
+"Contrôle la vitesse des balles tirées par son utilisateur":"Controls the speed of bullets fired by its user",
+"Gonfle les objets et les êtres vivants qu’il touche":"Inflates objects and living beings it touches",
+"Autocollants qui marquent les cibles et se propagent par le sang":"Stickers mark targets and spread through blood",
+"Produit une brume visible par les utilisateurs de Stand; autres effets inconnus":"Produces mist visible to Stand users; other effects are unknown",
+"Stand à longue portée capable de poursuivre et d’attaquer; détails inconnus":"A long-range Stand that can pursue and attack; details are unknown",
+"Transforme les personnes en livres et permet de lire ou modifier leurs pages":"Turns people into books whose pages can be read or edited"
+};
+var V={A:5,B:4,C:3,D:2,E:1,"∞":6},L=["PWR","SPD","RNG","DUR","PRC","POT"];
+var RC={S:"#d4a017",A:"#ef4444",B:"#f97316",C:"#22c55e",D:"#3b82f6"},OR={S:0,A:1,B:2,C:3,D:4};
+var RS={S:["Star Platinum","The World","Crazy Diamond","Killer Queen","Gold Experience / Requiem","King Crimson","Made in Heaven","C-Moon","D4C","Tusk (Act 1 à 4)"],
+A:["Magician’s Red","Hierophant Green","Silver Chariot","Cream","Atum / Osiris","Heaven’s Door","The Hand","Echoes (Act 1/2/3)","Sticky Fingers","Purple Haze","Sex Pistols","Metallica","Notorious B.I.G","Green Day","Stone Free","Weather Report","Whitesnake","Diver Down","Ball Breaker","Scary Monsters","Mandom","Jumpin’ Jack Flash","Bohemian Rhapsody"],
+C:["Emperor","Hanged Man","Death Thirteen","Judgement","Yellow Temperance","Empress","Lovers","Anubis","Sethan","Khnum","Thoth","Harvest","Aqua Necklace","Highway Star","Love Deluxe","Atom Heart Father","Beach Boy","Baby Face","Little Feet","Foo Fighters","Goo Goo Dolls","Jail House Lock","Ticket to Ride","Oh! Lovers","Cream Starter","Burning Down the House","Yo-Yo Ma"],
+D:["The Fool","Dark Blue Moon","Strength","Tower of Gray","Wheel of Fortune","Ebony Devil","The Sun","Stray Cat","Surface","Boy II Man"]};
+function rank(n){for(var r in RS)if(RS[r].indexOf(n)>-1)return r;return "B"}
+function esc(x){return String(x).replace(/&/g,"&amp;").replace(/</g,"&lt;")}
+function t(key){return UI[lang][key]}
+function standType(s){return lang==="en"?TYPES_EN[s[3]]||s[3]:s[3]}
+function standPower(s){return lang==="en"?MORE_POWERS_EN[s[5]]||POWERS_EN[s[5]]||s[5]:s[5]}
+function partName(p){return names[p]&&names[p][lang]||t("part")+" "+p}
+function setLanguage(next){
+ lang=next==="en"?"en":"fr";
+ try{localStorage.setItem("jojo-lang",lang)}catch(e){}
+ document.documentElement.lang=lang;
+ document.title=lang==="en"?"JoJo Stand Collection":"Catalogue des Stands – JoJo";
+ document.getElementById("kick").textContent=t("collection");
+ document.getElementById("subtitle").textContent=t("subtitle");
+ document.getElementById("q").placeholder=t("search");
+ document.getElementById("lang-switch").setAttribute("aria-label",t("language"));
+ document.getElementById("parts-label").textContent=lang==="en"?"PART":"PARTIE";
+ document.getElementById("ranks-label").textContent=lang==="en"?"TIER":"RANG";
+ document.getElementById("catalog-title").textContent=lang==="en"?"STAND INDEX":"LE CATALOGUE";
+ document.getElementById("footer").innerHTML=t("footer")+"<br>"+t("footerImage");
+ document.querySelectorAll(".lang-switch button").forEach(function(b){var active=b.getAttribute("data-lang")===lang;b.classList.toggle("on",active);b.setAttribute("aria-pressed",active?"true":"false")});
+ buildChips();
+ render();
+ if(!detail.hidden&&detailIndex!==null)openDetail(detailIndex)
+}
+function gi(k){try{return localStorage.getItem("jj"+k)}catch(e){return null}}
+function radar(st){
+ if(!st)return "<div class='nr'>"+t("statsUnknown")+"</div>";
+ var cx=100,cy=100,R=56,p=[],g="",ax="",lb="";
+ for(var i=0;i<6;i++){var a=-Math.PI/2+i*Math.PI/3,c=Math.cos(a),s=Math.sin(a),v=Math.min(V[st[i]]||0,5.5)/5;
+  ax+="<line x1='100' y1='100' x2='"+(cx+R*c).toFixed(1)+"' y2='"+(cy+R*s).toFixed(1)+"'/>";
+  p.push((cx+R*v*c).toFixed(1)+","+(cy+R*v*s).toFixed(1));
+  lb+="<text x='"+(cx+(R+18)*c).toFixed(1)+"' y='"+(cy+(R+18)*s+5).toFixed(1)+"' text-anchor='middle'>"+UI[lang].statLabels[i]+" "+st[i]+"</text>"}
+ for(var k=1;k<=5;k++){var q=[];for(var j=0;j<6;j++){var b=-Math.PI/2+j*Math.PI/3;q.push((cx+R*k/5*Math.cos(b)).toFixed(1)+","+(cy+R*k/5*Math.sin(b)).toFixed(1))}g+="<polygon points='"+q.join(" ")+"'/>"}
+ return "<svg class='rd' viewBox='0 0 200 200'><g stroke='currentColor' stroke-opacity='.25' fill='none'>"+g+ax+"</g><polygon points='"+p.join(" ")+"' fill='var(--rc)' fill-opacity='.5' stroke='var(--rc)' stroke-width='2.5'/><g fill='currentColor' font-size='14'>"+lb+"</g></svg>";
+}
+var cur=0,cr="",srt=false,last=null,tk=null,hoverTimer=null,detailCache={},detailIndex=null,cardImageObserver=null;
+function card(s,k){
+ var rk=rank(s[1]),im=gi(k),n=("00"+(k+1)).slice(-3),side=s[4]?"<div class='card-stats' aria-label='"+t("stats")+"'>"+s[4].split("").map(function(v,i){return "<span class='card-stat'><span>"+UI[lang].statLabels[i]+"</span><b>"+v+"</b></span>"}).join("")+"</div>":"<div class='card-no-stats'><span>"+t("standInfo")+"</span><span>"+t("type")+": "+esc(standType(s))+"</span><span>"+t("part")+" "+s[0]+"</span></div>";
+ return "<div class='c "+rk+"' data-k='"+k+"'><div class='bd'>"+rk+"</div><div class='in'><div class='hd'><b>"+esc(s[1])+"</b></div>"+
+ "<div class='im"+(im?" ready":"")+"' data-k='"+k+"' title='"+t("imageTitle")+"'>"+(im?"<img src='"+im+"' alt='"+esc(s[1])+"' data-custom='true'>":"<div class='card-photo-placeholder'>"+t("image")+"<br>"+esc(s[1])+"</div><img data-card-photo alt='"+esc(s[1])+"' hidden>")+"</div>"+
+ "<div class='ty'><span>"+t("stand")+" · "+esc(standType(s))+"</span><span>P"+s[0]+"</span></div><div class='card-bottom'><div class='card-summary'><b>"+t("ability")+"</b><span>"+esc(standPower(s))+"</span></div>"+side+"</div>"+
+ "<div class='ft'><span>"+esc(s[2])+"</span><span>#"+n+"/"+D.length+"</span></div></div></div>";
+}
+function loadCardImage(cardElement){
+ var image=cardElement.querySelector("[data-card-photo]"),frame=cardElement.querySelector(".im");
+ if(!image||!frame)return;
+ var s=D[+cardElement.getAttribute("data-k")];
+ fetchWikiInfo(s[1]).then(function(info){
+  if(!image.isConnected)return;
+  if(!info||!info.image){frame.querySelector(".card-photo-placeholder").textContent=t("imageUnavailable");return}
+  image.onload=function(){image.hidden=false;frame.classList.add("ready");frame.querySelector(".card-photo-placeholder").hidden=true};
+  image.onerror=function(){if(image.isConnected)frame.querySelector(".card-photo-placeholder").textContent=t("imageUnavailable")};
+  image.src=info.image
+ }).catch(function(){if(image.isConnected)frame.querySelector(".card-photo-placeholder").textContent=t("imageUnavailable")})
+}
+function render(){
+ var q=document.getElementById("q").value.toLowerCase(),l=[];
+ D.forEach(function(s,k){
+  if(cur&&s[0]!==cur)return;
+  if(cr&&rank(s[1])!==cr)return;
+  if(q&&(s[1]+" "+s[2]+" "+s[5]+" "+s[3]+" "+standPower(s)+" "+standType(s)).toLowerCase().indexOf(q)<0)return;
+  l.push(k)});
+ if(srt)l.sort(function(a,b){return OR[rank(D[a][1])]-OR[rank(D[b][1])]||a-b});
+ document.getElementById("g").innerHTML=l.map(function(k){return card(D[k],k)}).join("")||"<p>"+t("nothing")+"</p>";
+ document.getElementById("count").textContent=l.length+" "+(l.length===1?t("count"):t("cards"))+(cur?" · "+t("part")+" "+cur+" : "+partName(cur):"");
+ if(!l.length&&cur>0&&cur<3)document.getElementById("g").innerHTML="<p class='empty-note'>"+t("emptyEarly")+"</p>";
+ document.querySelectorAll("#g .c").forEach(function(el){if(cardImageObserver)cardImageObserver.observe(el);else loadCardImage(el)});
+}
+function chips(id,items,get,set,col){
+ var el=document.getElementById(id);
+ items.forEach(function(it){var b=document.createElement("button");b.className="chip"+(get()===it[0]?" on":"");b.textContent=it[1];
+  if(col&&it[0])b.style.setProperty("--rc",RC[it[0]]);
+  b.setAttribute("aria-pressed",get()===it[0]?"true":"false");
+  b.onclick=function(){set(it[0]);[].forEach.call(el.children,function(x){x.className="chip";x.setAttribute("aria-pressed","false")});b.className="chip on";b.setAttribute("aria-pressed","true");render()};el.appendChild(b)});
+}
+function buildChips(){
+ document.getElementById("pb").innerHTML="";
+ document.getElementById("rb").innerHTML="";
+ chips("pb",[[0,t("all")],[1,"P1"],[2,"P2"],[3,"P3"],[4,"P4"],[5,"P5"],[6,"P6"],[7,"P7"],[8,"P8"],[9,"P9"]],function(){return cur},function(v){cur=v});
+ chips("rb",[["",t("ranks")],["S","S"],["A","A"],["B","B"],["C","C"],["D","D"]],function(){return cr},function(v){cr=v},true);
+ var sort=document.getElementById("so");
+ sort.textContent=srt?t("sortRank"):t("sortOrder");
+ sort.onclick=function(){srt=!srt;this.textContent=srt?t("sortRank"):t("sortOrder");render()}
+}
+var cnt={};D.forEach(function(s){var r=rank(s[1]);cnt[r]=(cnt[r]||0)+1});
+document.getElementById("sum").innerHTML=["S","A","B","C","D"].map(function(r){return "<div class='pill' style='--rc:"+RC[r]+"'><b>"+r+"</b>"+(cnt[r]||0)+"</div>"}).join("");
+var g=document.getElementById("g"),zm=document.getElementById("zm");
+var detail=document.getElementById("detail");
+if("IntersectionObserver"in window)cardImageObserver=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){loadCardImage(entry.target);cardImageObserver.unobserve(entry.target)}})},{rootMargin:"220px"});
+var fi=document.createElement("input");fi.type="file";fi.accept="image/*";fi.style.display="none";document.body.appendChild(fi);
+g.onclick=function(e){var t=e.target.closest(".im");if(t){tk=t.getAttribute("data-k");fi.click();return}var c=e.target.closest(".c");if(c)openZ(c)};
+function openZ(c){var s=D[+c.getAttribute("data-k")];
+ zm.innerHTML="<div class='zw'>"+c.outerHTML+"<div class='lks'><a target='_blank' rel='noopener' href='https://www.google.com/search?tbm=isch&q="+encodeURIComponent("JoJo "+s[1]+" stand")+"'>"+t("zoomStand")+"</a><a target='_blank' rel='noopener' href='https://www.google.com/search?tbm=isch&q="+encodeURIComponent("JoJo "+s[2])+"'>"+t("zoomUser")+"</a><button class='x' type='button' aria-label='"+t("close")+"'>×</button></div></div>";
+ zm.hidden=false}
+zm.onclick=function(e){if(e.target===zm||e.target.closest(".x"))zm.hidden=true};
+function wikiSearchUrl(term){return "https://jojowiki.com/index.php?search="+encodeURIComponent(term)}
+function wikiPageUrl(title){return "https://jojowiki.com/"+encodeURIComponent(title.replace(/ /g,"_"))}
+function fetchWikiInfo(term){
+ if(detailCache[term])return detailCache[term];
+ var params=new URLSearchParams({action:"query",prop:"pageimages|extracts",titles:term,piprop:"thumbnail",pithumbsize:"640",exintro:"1",explaintext:"1",format:"json",origin:"*"});
+ detailCache[term]=fetch("https://jojowiki.com/api.php?"+params.toString()).then(function(response){
+  if(!response.ok)throw new Error("JoJo Wiki (HTTP "+response.status+")");
+  return response.json()
+ }).then(function(data){
+  var pages=data.query&&data.query.pages;
+  var page=pages&&(Array.isArray(pages)?pages[0]:Object.values(pages)[0]);
+  var exact=page&&page.pageid?{title:page.title,image:page.thumbnail&&page.thumbnail.source,extract:page.extract||""}:null;
+  if(exact&&exact.image)return exact;
+  var search=new URLSearchParams({action:"query",generator:"search",gsrsearch:term,gsrnamespace:"0",gsrlimit:"1",prop:"pageimages|extracts",piprop:"thumbnail",pithumbsize:"640",exintro:"1",explaintext:"1",format:"json",origin:"*"});
+  return fetch("https://jojowiki.com/api.php?"+search.toString()).then(function(response){
+   if(!response.ok)throw new Error("JoJo Wiki search (HTTP "+response.status+")");
+   return response.json()
+  }).then(function(result){
+   var found=result.query&&result.query.pages;
+   var candidate=found&&(Array.isArray(found)?found[0]:Object.values(found)[0]);
+   return candidate&&candidate.pageid?{title:candidate.title,image:candidate.thumbnail&&candidate.thumbnail.source,extract:candidate.extract||""}:exact
+  })
+ }).catch(function(error){delete detailCache[term];throw error});
+ return detailCache[term]
+}
+function setWikiImage(slot,term,label){
+ var frame=document.getElementById(slot+"-frame"),caption=document.getElementById(slot+"-caption"),image=document.getElementById(slot+"-image");
+ fetchWikiInfo(term).then(function(info){
+  if(!info||!info.image){frame.innerHTML="<div class='detail-placeholder'>"+t("imageUnavailable")+"<br><a target='_blank' rel='noopener' href='"+wikiSearchUrl(term)+"'>"+t("searchImage")+"</a></div>";return}
+  image.src=info.image;image.alt=label+" — "+info.title;frame.querySelector(".detail-placeholder").hidden=true;image.hidden=false;
+  image.onerror=function(){if(image.isConnected)frame.innerHTML="<div class='detail-placeholder'>"+t("imageError")+"<br><a target='_blank' rel='noopener' href='"+wikiSearchUrl(term)+"'>"+t("openSource")+"</a></div>"};
+  caption.textContent=info.title+" · JoJo Wiki";
+  var link=document.getElementById(slot+"-source");link.href=wikiPageUrl(info.title);link.textContent=(lang==="en"?"Image source: ":"Source image : ")+info.title
+ }).catch(function(){
+  frame.innerHTML="<div class='detail-placeholder'>"+t("fetchError")+"<br><a target='_blank' rel='noopener' href='"+wikiSearchUrl(term)+"'>"+t("wikiSearch")+"</a></div>"
+ })
+}
+function openDetail(k){
+ var s=D[k],name=s[2],searchTerm=s[1],statMarkup="";
+ if(s[4])for(var i=0;i<6;i++)statMarkup+="<div class='detail-fact'><b>"+UI[lang].stats[i]+"</b>"+esc(UI[lang].grades[s[4][i]]||s[4][i])+"</div>";
+ var detailRadar=s[4]?"<div class='detail-radar'>"+radar(s[4])+"</div>":"";
+ detailIndex=k;
+ detail.innerHTML="<section class='detail-panel'><header class='detail-head'><h2 id='detail-title'>"+esc(s[1])+"</h2><button class='x' type='button' aria-label='"+t("close")+"'>×</button></header><div class='detail-content'><div class='detail-gallery'><figure class='detail-image' id='stand-frame'><div class='detail-placeholder'>"+t("image")+"</div><img id='stand-image' alt='' hidden><figcaption id='stand-caption'>"+t("stand")+"</figcaption></figure><figure class='detail-image' id='user-frame'><div class='detail-placeholder'>"+(name==="—"?t("noUser"):t("portrait"))+"</div><img id='user-image' alt='' hidden><figcaption id='user-caption'>"+esc(name)+"</figcaption></figure></div><div class='detail-facts'><div class='detail-fact'><b>"+t("user")+"</b>"+esc(name)+"</div><div class='detail-fact'><b>"+t("part")+"</b>"+esc(partName(s[0]))+"</div><div class='detail-fact'><b>"+t("type")+"</b>"+esc(standType(s))+"</div><div class='detail-fact'><b>"+t("personalRank")+"</b>"+rank(s[1])+" "+t("personal")+"</div><div class='detail-fact'><b>"+t("power")+"</b>"+esc(standPower(s))+"</div>"+statMarkup+"</div>"+detailRadar+"<h3>"+t("about")+"</h3><p class='detail-description' id='stand-extract'>"+esc(standPower(s))+"</p><p class='detail-description' id='user-extract'>"+(name==="—"?t("noUserListed"):t("loadingUser"))+"</p><p class='detail-status' id='wiki-status'>"+t("wikiNote")+"</p><div class='detail-sources'><a id='stand-source' target='_blank' rel='noopener' href='"+wikiSearchUrl(searchTerm)+"'>"+t("standSource")+"</a><a id='user-source' target='_blank' rel='noopener' href='"+wikiSearchUrl(name)+"'>"+(name==="—"?t("noUserSource"):t("userSource"))+"</a></div></div></section>";
+ detail.hidden=false;
+ setWikiImage("stand",searchTerm,"Stand");
+ if(name!=="—")setWikiImage("user",name,"Utilisateur");
+ fetchWikiInfo(searchTerm).then(function(info){
+  var text=document.getElementById("stand-extract");
+  if(text)text.textContent=info&&info.extract?info.extract+"\n\n"+t("powerCard")+" "+standPower(s)+".":t("noSummary")+" "+t("powerCard")+" "+standPower(s)+".";
+  if(info){var link=document.getElementById("stand-source");link.href=wikiPageUrl(info.title);link.textContent=t("standSource").replace(/rechercher sur JoJo Wiki|search JoJo Wiki/i,info.title)}
+ }).catch(function(){var text=document.getElementById("stand-extract");if(text)text.textContent=t("summaryUnavailable")});
+ if(name!=="—")fetchWikiInfo(name).then(function(info){
+  var text=document.getElementById("user-extract");
+  if(text)text.textContent=info&&info.extract?info.extract:t("noSummary")+" "+t("noPersonSummary");
+  if(info){var link=document.getElementById("user-source");link.href=wikiPageUrl(info.title);link.textContent=t("userSource").replace(/rechercher sur JoJo Wiki|search JoJo Wiki/i,info.title)}
+ }).catch(function(){var text=document.getElementById("user-extract");if(text)text.textContent=t("summaryUnavailable")});
+}
+detail.onclick=function(e){if(e.target===detail||e.target.closest(".x"))detail.hidden=true};
+document.onkeydown=function(e){if(e.key==="Escape"){zm.hidden=true;detail.hidden=true}};
+function rs(c){["--rx","--ry","--mx","--my"].forEach(function(v){c.style.removeProperty(v)})}
+g.onpointerover=function(e){if(e.pointerType!=="mouse")return;var c=e.target.closest(".c");if(!c||c.contains(e.relatedTarget))return;clearTimeout(hoverTimer);var k=+c.getAttribute("data-k");hoverTimer=setTimeout(function(){if(c.isConnected)openDetail(k)},3000)};
+g.onpointerout=function(e){if(e.pointerType!=="mouse")return;var c=e.target.closest(".c");if(c&&!c.contains(e.relatedTarget))clearTimeout(hoverTimer)};
+g.onpointermove=function(e){if(e.pointerType!=="mouse")return;var c=e.target.closest(".c");if(last&&last!==c)rs(last);last=c;if(!c)return;
+ var r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;
+ c.style.setProperty("--ry",((x-.5)*14).toFixed(1)+"deg");c.style.setProperty("--rx",((.5-y)*14).toFixed(1)+"deg");c.style.setProperty("--mx",(x*100)+"%");c.style.setProperty("--my",(y*100)+"%")};
+g.onpointerleave=function(){clearTimeout(hoverTimer);if(last)rs(last);last=null};
+fi.onchange=function(){var f=fi.files[0];if(!f)return;var r=new FileReader();r.onload=function(){var im=new Image();im.onload=function(){var c=document.createElement("canvas"),m=Math.min(1,320/Math.max(im.width,im.height));c.width=im.width*m;c.height=im.height*m;c.getContext("2d").drawImage(im,0,0,c.width,c.height);try{localStorage.setItem("jj"+tk,c.toDataURL("image/jpeg",.8))}catch(e){}render()};im.src=r.result};r.readAsDataURL(f);fi.value=""};
+document.getElementById("q").oninput=render;
+document.querySelectorAll(".lang-switch button").forEach(function(button){button.onclick=function(){setLanguage(button.getAttribute("data-lang"))}});
+setLanguage(lang);
+</script>
+</body>
+</html>
